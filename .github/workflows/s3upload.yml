@@ -26,5 +26,5 @@ jobs:
     - name: Upload to S3 Bucket
       run: |
         # To upload a single file:
-        aws s3 cp . s3://githubaction-sott-demo/
+        aws s3 cp ./ s3://githubaction-sott-demo/
         
