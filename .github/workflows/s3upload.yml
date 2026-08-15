@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-job:
+jobs:
   upload-to-s3:
     runs-on: ubuntu-latest
     steps:
