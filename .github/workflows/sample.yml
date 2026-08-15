@@ -1,0 +1,16 @@
+name: Github actions file to echo status
+on:
+    push:
+        branches:
+            - main
+            - feature
+
+jobs:
+    echotest:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print a message
+              run: echo "Hi from Github!!!"
+
+            - name: Show the date
+              run: date
