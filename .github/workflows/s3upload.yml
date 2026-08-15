@@ -1,30 +1,22 @@
-name: Upload Files to AWS S3
-
+name: S3 file upload from Github repository
 on:
   push:
     branches:
-      - main # Triggers the workflow when code is pushed to the main branch
-
-jobs:
-  deploy:
+      - main
+job:
+  upload-to-s3:
     runs-on: ubuntu-latest
-
     steps:
-    # Step 1: Check out the code from the repository
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    # Step 2: Authenticate with AWS using Repository Secrets
-    - name: Configure AWS Credentials
-      uses: aws-actions/configure-aws-credentials@v4
-      with:
-        aws-access-key-id: AKIA22CTUXLJYLUUEY4N
-        aws-secret-access-key: 7QtmGBHhGOddxHUSPKf9Sy2PzjDCP1luhC0K8GcP
-        aws-region: us-east-1 # Change to your bucket's region
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: AKIA22CTUXLJYLUUEY4N
+          aws-secret-access-key: 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
+          aws-region: us-east-1
 
-    # Step 3: Copy a specific file or folder to S3
-    - name: Upload to S3 Bucket
-      run: |
-        # To upload a single file:
-        aws s3 cp ./ s3://githubaction-sott-demo/
-        
+      - name: Upload files to S3
+        run: |
+          aws s3 cp . s3://githubaction-sott-demo/ --recursive
