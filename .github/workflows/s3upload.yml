@@ -1,4 +1,18 @@
 name: S3 file upload
+
+input:
+  AWS_ACCESS_KEY_ID:
+    description: 'AWS Access Key ID'
+    required: true
+  AWS_SECRET_ACCESS_KEY:
+    description: 'AWS Secret Access Key'
+    required: true
+  Environment:
+    description: 'Environment (e.g., dev, staging, prod)'
+    required: true
+  Dockertag:
+    description: 'Docker tag for the image'
+    required: true
 on:
   push:
     branches:
